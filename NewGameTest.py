@@ -29,6 +29,8 @@ class ActiveUnit(unit):
         self.DEF = (round((self.Level - 1) * self.GDEF,0) + self.BDEF) * 5
         # Unit's Sets
         self.skillList = []
+        # Unit's Interval
+        self.Interval = 0
 
 
     # Prints the Unit's Stats
