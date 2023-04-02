@@ -21,7 +21,7 @@ class unit():
 class ActiveUnit(unit):
     def __init__(self, UName, ULevel, UBHP, UBATK, UBSPD, UBDEF, UGHP, UGATK, UGSPD, UGDEF):
         # Inheriting the unit class
-        super.__init__(self, UName, ULevel, UBHP, UBATK, UBSPD, UBDEF, UGHP, UGATK, UGSPD, UGDEF)
+        unit.__init__(self, UName, ULevel, UBHP, UBATK, UBSPD, UBDEF, UGHP, UGATK, UGSPD, UGDEF)
         # Unit's stats
         self.HP = round((self.Level - 1) * self.GHP,0) + self.BHP
         self.ATK = round((self.Level - 1) * self.GATK,0) + self.BATK
