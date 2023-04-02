@@ -16,7 +16,7 @@ class unit():
         self.GATK = UGATK
         self.GSPD = UGSPD
         self.GDEF = UGDEF
-        self.taglist = []
+# End of class unit
 
 class ActiveUnit(unit):
     def __init__(self, UName, ULevel, UBHP, UBATK, UBSPD, UBDEF, UGHP, UGATK, UGSPD, UGDEF):
@@ -27,7 +27,11 @@ class ActiveUnit(unit):
         self.ATK = (round((self.Level - 1) * self.GATK,0) + self.BATK) * 5
         self.SPD = (round((self.Level - 1) * self.GSPD,0) + self.BSPD) * 5
         self.DEF = (round((self.Level - 1) * self.GDEF,0) + self.BDEF) * 5
+        # Unit's Sets
+        self.skillList = []
 
+
+    # Prints the Unit's Stats
     def printStats(self):
         print(f"Unit Analysis for {self.Name}")
         print(f"Level: {self.Level}")
@@ -35,5 +39,4 @@ class ActiveUnit(unit):
         print(f"ATK: {self.ATK}")
         print(f"SPD: {self.SPD}")
         print(f"DEF: {self.DEF}")
-        pass
-
+# End of class ActiveUnit
