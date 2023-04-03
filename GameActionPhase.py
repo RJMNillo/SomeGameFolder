@@ -20,9 +20,24 @@ class ActionPhase():
         
         # Creating the Interval
         self.totalInterval = 0
-        for someunit in TeamA:
+        for someunit in self.Team1:
             self.totalInterval = self.totalInterval + someunit.SPD
-        for someunit in TeamB:
+        for someunit in self.Team2:
             self.totalInterval = self.totalInterval + someunit.SPD
         
         self.totalInterval = int(self.totalInterval/AvgOfPlayers)
+
+        # Status Holders
+        # Integer Variables that hold the entire team's HP
+        self.Team1HP = 0
+        self.Team2HP = 0
+
+        for someunit in self.Team1:
+            self.Team1HP = self.Team1HP + someunit.HP
+        for someunit in self.Team2:
+            self.Team2HP = self.Team2HP + someunit.HP
+
+    # Function Definition of the Action Phase
+    def DoAction(self):
+
+        pass
