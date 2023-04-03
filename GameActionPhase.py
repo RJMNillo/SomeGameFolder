@@ -39,5 +39,9 @@ class ActionPhase():
 
     # Function Definition of the Action Phase
     def DoAction(self):
-
-        pass
+        if self.Team1HP == 0:
+            print("Team 2 Wins!")
+        elif self.Team2HP == 0:
+            print("Team 1 Wins!")
+        else:
+            pass

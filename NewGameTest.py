@@ -23,10 +23,10 @@ class ActiveUnit(unit):
         # Inheriting the unit class
         unit.__init__(self, UName, ULevel, UBHP, UBATK, UBSPD, UBDEF, UGHP, UGATK, UGSPD, UGDEF)
         # Unit's stats
-        self.HP = (round((self.Level - 1) * self.GHP,0) + self.BHP) * 10
-        self.ATK = (round((self.Level - 1) * self.GATK,0) + self.BATK) * 5
-        self.SPD = (round((self.Level - 1) * self.GSPD,0) + self.BSPD) * 5
-        self.DEF = (round((self.Level - 1) * self.GDEF,0) + self.BDEF) * 5
+        self.HP = int((round((self.Level - 1) * self.GHP,0) + self.BHP) * 10)
+        self.ATK = int((round((self.Level - 1) * self.GATK,0) + self.BATK) * 5)
+        self.SPD = int((round((self.Level - 1) * self.GSPD,0) + self.BSPD) * 5)
+        self.DEF = int((round((self.Level - 1) * self.GDEF,0) + self.BDEF) * 5)
         # Unit's Sets
         self.skillList = []
         # Unit's Interval
