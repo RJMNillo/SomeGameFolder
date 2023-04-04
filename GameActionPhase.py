@@ -29,16 +29,15 @@ class ActionPhase():
 
         # Status Holders
         # Integer Variables that hold the entire team's HP
-        self.Team1HP = 0
-        self.Team2HP = 0
+        self.Team1HP = self.checkHP(self.Team1)
+        self.Team2HP = self.checkHP(self.Team2)
 
-        for someunit in self.Team1:
-            self.Team1HP = self.Team1HP + someunit.HP
-        for someunit in self.Team2:
-            self.Team2HP = self.Team2HP + someunit.HP
 
     # Function Definition of the Action Phase
-    def DoAction(self):
+    def DoTurn(self):
+        self.Team1HP = self.checkHP(self.Team1)
+        self.Team2HP = self.checkHP(self.Team2)
+
         if self.Team1HP == 0:
             print("Team 2 Wins!")
         elif self.Team2HP == 0:
@@ -65,6 +64,17 @@ class ActionPhase():
 
 
     # Helper Functions
+
+    # Check Team HP
+    def checkHP(self, Team):
+        TeamHP = 0
+        for someunit in Team:
+            print(f"{someunit.Name}'s HP: {someunit.HP}")
+            TeamHP = TeamHP + someunit.HP
+        print(f"Total Team HP: {TeamHP}")
+        print("-------------------------------------------------")
+        return TeamHP
+
     # Team 1 Ready
     def Team1Ready(self):
         for someunit in self.Team1:

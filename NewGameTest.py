@@ -41,4 +41,5 @@ class ActiveUnit(unit):
         print(f"ATK: {self.ATK}")
         print(f"SPD: {self.SPD}")
         print(f"DEF: {self.DEF}")
+        print("------------------------------------")
 # End of class ActiveUnit
