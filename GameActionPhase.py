@@ -44,4 +44,37 @@ class ActionPhase():
         elif self.Team2HP == 0:
             print("Team 1 Wins!")
         else:
-            pass
+            # Check if teams are ready to attack
+            if (self.Team1Ready() or self.Team2Ready()):
+                # Both Teams are ready
+                if (self.Team1Ready() and self.Team2Ready()):
+                    pass
+                # Someone from Team 1 is ready
+                elif (self.Team1Ready()):
+                    pass
+                # Someone from Team 2 is ready
+                elif(self.Team2Ready()):
+                    pass
+                # If nobody is ready, increase intervals
+                else:
+                    for someunit in self.Team1:
+                        someunit.Interval = someunit.Interval + someunit.SPD
+                    for someunit in self.Team2:
+                        someunit.Interval = someunit.Interval + someunit.SPD
+
+
+
+    # Helper Functions
+    # Team 1 Ready
+    def Team1Ready(self):
+        for someunit in self.Team1:
+            if someunit.Interval >= self.totalInterval:
+                return True
+            return False
+    
+    # Team 2 Ready
+    def Team2Ready(self):
+        for someunit in self.Team2:
+            if someunit.Interval >= self.totalInterval:
+                return True
+            return False
