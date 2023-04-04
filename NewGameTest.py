@@ -3,6 +3,7 @@
 
 # RPG
 # Might follow the classic Megami Tensei Route
+import ActionList
 
 class unit():
     def __init__(self, UName, ULevel, UBHP, UBATK, UBSPD, UBDEF, UGHP, UGATK, UGSPD, UGDEF):
@@ -29,6 +30,8 @@ class ActiveUnit(unit):
         self.DEF = int((round((self.Level - 1) * self.GDEF,0) + self.BDEF) * 5)
         # Unit's Sets
         self.skillList = []
+        self.skillList.append(ActionList.BasicAttack)
+
         # Unit's Interval
         self.Interval = 0
 

@@ -17,4 +17,5 @@ if __name__ == "__main__":
 
     print("Get Ready for the next BATTLE")
     print("**************************************")
-    GameAction.DoTurn()
+    while(GameAction.Team1HP > 0 and GameAction.Team2HP > 0):
+        GameAction.DoTurn()
