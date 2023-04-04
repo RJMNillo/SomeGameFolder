@@ -55,11 +55,13 @@ class ActionPhase():
                 elif(self.Team2Ready()):
                     pass
                 # If nobody is ready, increase intervals
-                else:
-                    for someunit in self.Team1:
-                        someunit.Interval = someunit.Interval + someunit.SPD
-                    for someunit in self.Team2:
-                        someunit.Interval = someunit.Interval + someunit.SPD
+            else:
+                for someunit in self.Team1:
+                    someunit.Interval = someunit.Interval + someunit.SPD
+                    print(f"{someunit.Name}'s Turn: {someunit.Interval}/{self.totalInterval}")
+                for someunit in self.Team2:
+                    someunit.Interval = someunit.Interval + someunit.SPD
+                    print(f"{someunit.Name}'s Turn: {someunit.Interval}/{self.totalInterval}")
 
 
 
