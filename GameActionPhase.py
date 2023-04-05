@@ -56,17 +56,10 @@ class ActionPhase():
                     pass
                 # If nobody is ready, increase intervals
             else:
-                for someunit in self.Team1:
-                    someunit.Interval = someunit.Interval + someunit.SPD
-                    print(f"{someunit.Name}'s Turn: {someunit.Interval}/{self.totalInterval}")
-                for someunit in self.Team2:
-                    someunit.Interval = someunit.Interval + someunit.SPD
-                    print(f"{someunit.Name}'s Turn: {someunit.Interval}/{self.totalInterval}")
-
-
+                self.IncInterval()
 
     # Helper Functions
-
+    # --------------------------------------------------------- #
     # Check Team HP
     def checkHP(self, Team):
         TeamHP = 0
@@ -90,3 +83,22 @@ class ActionPhase():
             if someunit.Interval >= self.totalInterval:
                 return True
             return False
+
+    # Attack
+    def FindAttacker(self, Team):
+        Attacker = None
+        TargetInterval = -999
+        for someunit in Team:
+            if someunit.Interval > TargetInterval:
+                Attacker = someunit
+        return Attacker  
+    
+    # Add Intervals
+    def IncInterval(self):
+        for someunit in self.Team1:
+                    someunit.Interval = someunit.Interval + someunit.SPD
+                    print(f"{someunit.Name}'s Turn: {someunit.Interval}/{self.totalInterval}")
+        for someunit in self.Team2:
+            someunit.Interval = someunit.Interval + someunit.SPD
+            print(f"{someunit.Name}'s Turn: {someunit.Interval}/{self.totalInterval}")
+    # --------------------------------------------------------- #

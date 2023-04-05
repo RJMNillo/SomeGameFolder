@@ -1,22 +1,14 @@
 # Action List
 
+
 class Action():
-    def __init__(self, AName, ACooldown = 0):  
+    def __init__(self, AName, NumTargets, multiplier, Cooldown = 0):  
         self.name = AName
-        self.cooldown = ACooldown
+        self.Maxcooldown = Cooldown
+        self.cooldown = Cooldown
+        self.targets = NumTargets
+        self.ATKMultiplier = multiplier
 
-    def DoAction(self):
-        pass
-
-# Actions List
-class BasicAttack(Action):
-    def __init__(self, AName, BAUser, BATarget):
-        Action.__init__(self, AName)
-        self.User = BAUser
-        self.Target = BATarget
-    
-    def DoAction(self):
-        DamageDealt = self.User.ATK - self.Target.DEF
-        self.Target.HP = self.Target.HP - DamageDealt
-        # All Actions will reset the Interval to 0
-        self.User.Interval = 0
+# Action List
+# A Basic Attack that everyone inherits
+Basic_Attack = Action("Basic Attack", 1, 1)
