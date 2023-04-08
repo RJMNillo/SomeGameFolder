@@ -30,7 +30,7 @@ class ActiveUnit(unit):
         self.DEF = int((round((self.Level - 1) * self.GDEF,0) + self.BDEF) * 5)
         # Unit's Sets
         self.skillList = []
-        self.skillList.append(ActionList.Basic_Attack)
+        self.addSkill(ActionList.Basic_Attack)
         # Unit's Interval
         self.Interval = 0
 
@@ -44,4 +44,7 @@ class ActiveUnit(unit):
         print(f"SPD: {self.SPD}")
         print(f"DEF: {self.DEF}")
         print("------------------------------------")
+
+    def addSkill(self,skill):
+        self.skillList.append(skill)
 # End of class ActiveUnit

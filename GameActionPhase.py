@@ -1,4 +1,5 @@
 from NewGameTest import unit, ActiveUnit
+import random
 # Reggie Jan Marc Nillo
 
 # Game Test
@@ -37,6 +38,7 @@ class ActionPhase():
     def DoTurn(self):
         self.Team1HP = self.checkHP(self.Team1)
         self.Team2HP = self.checkHP(self.Team2)
+        Attacker = None
 
         if self.Team1HP == 0:
             print("Team 2 Wins!")
@@ -50,13 +52,14 @@ class ActionPhase():
                     pass
                 # Someone from Team 1 is ready
                 elif (self.Team1Ready()):
-                    pass
+                    Attacker = self.FindAttacker(self.Team1)
                 # Someone from Team 2 is ready
                 elif(self.Team2Ready()):
-                    pass
+                    Attacker = self.FindAttacker(self.Team2)
                 # If nobody is ready, increase intervals
             else:
                 self.IncInterval()
+        print("---------------------------------------------")
 
     # Helper Functions
     # --------------------------------------------------------- #
@@ -91,6 +94,7 @@ class ActionPhase():
         for someunit in Team:
             if someunit.Interval > TargetInterval:
                 Attacker = someunit
+        print(f"{Attacker.Name} is going to attack!")
         return Attacker  
     
     # Add Intervals
