@@ -4,6 +4,7 @@
 # RPG
 # Might follow the classic Megami Tensei Route
 import ActionList
+import random
 
 class unit():
     def __init__(self, UName, ULevel, UBHP, UBATK, UBSPD, UBDEF, UGHP, UGATK, UGSPD, UGDEF):
@@ -47,4 +48,17 @@ class ActiveUnit(unit):
 
     def addSkill(self,skill):
         self.skillList.append(skill)
+    
+    # Find Skill
+    def FindSkill(self):
+        ASkill = random.choice(self.skillList)
+        while ASkill.cooldown > 0:
+            ASkill = random.choice(self.skillList)
+        print(f"{self.Name} is going to use {ASkill.name}!")
+        return ASkill
+    
+    # Find Targets
+    def FindTargets(self, Skill, OtherTeam):
+
+        pass
 # End of class ActiveUnit
