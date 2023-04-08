@@ -53,9 +53,11 @@ class ActionPhase():
                 # Someone from Team 1 is ready
                 elif (self.Team1Ready()):
                     Attacker = self.FindAttacker(self.Team1)
+                    self.FindSkill(Attacker)
                 # Someone from Team 2 is ready
                 elif(self.Team2Ready()):
                     Attacker = self.FindAttacker(self.Team2)
+                    self.FindSkill(Attacker)
                 # If nobody is ready, increase intervals
             else:
                 self.IncInterval()
@@ -96,6 +98,14 @@ class ActionPhase():
                 Attacker = someunit
         print(f"{Attacker.Name} is going to attack!")
         return Attacker  
+    
+    # Find Skill
+    def FindSkill(self, AUnit):
+        ASkill = random.choice(AUnit.skillList)
+        while ASkill.cooldown > 0:
+            ASkill = random.choice(AUnit.skillList)
+        print(f"{AUnit.Name} is going to use {ASkill.name}!")
+        return ASkill
     
     # Add Intervals
     def IncInterval(self):
