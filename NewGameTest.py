@@ -35,7 +35,6 @@ class ActiveUnit(unit):
         # Unit's Interval
         self.Interval = 0
 
-
     # Prints the Unit's Stats
     def printStats(self):
         print(f"Unit Analysis for {self.Name}")
@@ -54,11 +53,25 @@ class ActiveUnit(unit):
         ASkill = random.choice(self.skillList)
         while ASkill.cooldown > 0:
             ASkill = random.choice(self.skillList)
-        print(f"{self.Name} is going to use {ASkill.name}!")
+        # print(f"{self.Name} is going to use {ASkill.name}!")
         return ASkill
     
     # Find Targets
     def FindTargets(self, Skill, OtherTeam):
-
-        pass
+        Targets = []
+        MinDef = 999999
+        PrevMinDef = -999999
+        RemTargets = 0
+        if Skill.targets == 0:
+            return OtherTeam
+        else:
+            while RemTargets < Skill.targets:
+                TargetTeammate = None
+                for someunit in OtherTeam:
+                    if someunit.DEF > PrevMinDef and someunit.DEF < MinDef:
+                        TargetTeammate = someunit
+                Targets.append(TargetTeammate)
+                MinDef = 999999
+                RemTargets += 1
+            return Targets
 # End of class ActiveUnit

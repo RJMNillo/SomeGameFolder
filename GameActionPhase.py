@@ -52,11 +52,13 @@ class ActionPhase():
                 # Someone from Team 1 is ready
                 elif (self.Team1Ready()):
                     Attacker = self.FindAttacker(self.Team1)
-                    Attacker.FindSkill()
+                    Skill = Attacker.FindSkill()
+                    Attacker.FindTargets(Skill, self.Team2)
                 # Someone from Team 2 is ready
                 elif(self.Team2Ready()):
                     Attacker = self.FindAttacker(self.Team2)
-                    Attacker.FindSkill()
+                    Skill = Attacker.FindSkill()
+                    Attacker.FindTargets(Skill, self.Team1)
                 # If nobody is ready, increase intervals
             else:
                 self.IncInterval()
