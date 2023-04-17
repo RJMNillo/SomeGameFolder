@@ -48,17 +48,18 @@ class ActionPhase():
             if (self.Team1Ready() or self.Team2Ready()):
                 # Both Teams are ready
                 if (self.Team1Ready() and self.Team2Ready()):
-                    pass
+                    Team1Attacker = self.FindAttacker(self.Team1)
+                    Team2Attacker = self.FindAttacker(self.Team2)
+                    if(Team1Attacker.SPD < Team2Attacker.SPD):
+                        self.Attack(self.Team1, self.Team2)
+                    else:
+                        self.Attack(self.Team2, self.Team1)
                 # Someone from Team 1 is ready
                 elif (self.Team1Ready()):
-                    Attacker = self.FindAttacker(self.Team1)
-                    Skill = Attacker.FindSkill()
-                    Attacker.FindTargets(Skill, self.Team2)
+                    self.Attack(self.Team1, self.Team2)
                 # Someone from Team 2 is ready
                 elif(self.Team2Ready()):
-                    Attacker = self.FindAttacker(self.Team2)
-                    Skill = Attacker.FindSkill()
-                    Attacker.FindTargets(Skill, self.Team1)
+                    self.Attack(self.Team2, self.Team1)
                 # If nobody is ready, increase intervals
             else:
                 self.IncInterval()
@@ -100,6 +101,13 @@ class ActionPhase():
         print(f"{Attacker.Name} is going to attack!")
         return Attacker  
     
+    # Attack Phases
+    def Attack(self, AttackingTeam, DefendingTeam):
+        Attacker = self.FindAttacker(AttackingTeam)
+        Skill = Attacker.FindSkill()
+        AttackerTargets = Attacker.FindTargets(Skill, DefendingTeam)
+        Attacker.DoAction(Skill, AttackerTargets)
+
     # Add Intervals
     def IncInterval(self):
         for someunit in self.Team1:

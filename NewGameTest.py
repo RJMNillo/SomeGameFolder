@@ -68,7 +68,7 @@ class ActiveUnit(unit):
             while RemTargets < Skill.targets:
                 TargetTeammate = None
                 for someunit in OtherTeam:
-                    if someunit.DEF > PrevMinDef and someunit.DEF < MinDef:
+                    if someunit.DEF > PrevMinDef and someunit.DEF < MinDef and someunit.HP > 0:
                         TargetTeammate = someunit
                 Targets.append(TargetTeammate)
                 MinDef = 999999
@@ -78,4 +78,21 @@ class ActiveUnit(unit):
                 TargetNames.append(someunit.Name)
             print(TargetNames)
             return Targets
+    
+    # Attack!
+    def DoAction(self, Skill, KnownTargets):
+        AttackPower = self.ATK * Skill.ATKMultiplier
+        for someunit in KnownTargets:
+            DamageDealt = 0
+            # Calculate damage: AttackPower - defense
+            DamageDealt = AttackPower - someunit.DEF
+            if DamageDealt < 0:
+                DamageDealt = 0 # What if an attack was so weak it heals?
+            # Put that damage dealt into HP
+            someunit.HP = someunit.HP - DamageDealt
+            if someunit.HP <= 0:
+                someunit.HP = 0
+                print(f"{someunit.Name} has been KO'd!")
+        # Then finally 0 out the interval
+        self.Interval = 0
 # End of class ActiveUnit
