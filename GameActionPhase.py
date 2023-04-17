@@ -50,9 +50,12 @@ class ActionPhase():
                 if (self.Team1Ready() and self.Team2Ready()):
                     Team1Attacker = self.FindAttacker(self.Team1)
                     Team2Attacker = self.FindAttacker(self.Team2)
+                    print("Looks like both teams are ready...")
                     if(Team1Attacker.SPD < Team2Attacker.SPD):
+                        print("Team 1 is faster!")
                         self.Attack(self.Team1, self.Team2)
                     else:
+                        print("Team 2 is faster!")
                         self.Attack(self.Team2, self.Team1)
                 # Someone from Team 1 is ready
                 elif (self.Team1Ready()):
