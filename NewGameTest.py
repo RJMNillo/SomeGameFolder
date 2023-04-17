@@ -53,7 +53,7 @@ class ActiveUnit(unit):
         ASkill = random.choice(self.skillList)
         while ASkill.cooldown > 0:
             ASkill = random.choice(self.skillList)
-        # print(f"{self.Name} is going to use {ASkill.name}!")
+        print(f"{self.Name} is going to use {ASkill.name}!")
         return ASkill
     
     # Find Targets
@@ -62,7 +62,7 @@ class ActiveUnit(unit):
         MinDef = 999999
         PrevMinDef = -999999
         RemTargets = 0
-        if Skill.targets == 0:
+        if Skill.targets == 0: # 0 Means that the Skill will target everyone
             return OtherTeam
         else:
             while RemTargets < Skill.targets:
@@ -73,5 +73,9 @@ class ActiveUnit(unit):
                 Targets.append(TargetTeammate)
                 MinDef = 999999
                 RemTargets += 1
+            TargetNames = []
+            for someunit in Targets:
+                TargetNames.append(someunit.Name)
+            print(TargetNames)
             return Targets
 # End of class ActiveUnit
