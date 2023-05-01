@@ -6,7 +6,7 @@ if __name__ == "__main__":
     JohnUnit = ActiveUnit("John", 30, 20, 10, 15, 14, 1, 0.8, 1.2, 0.9)
     JohnUnit.printStats()
 
-    JackUnit = ActiveUnit("Jack", 15, 18, 25, 9, 14, 0.9, 1.2, 2, 0.4)
+    JackUnit = ActiveUnit("Jack", 27, 18, 25, 9, 14, 0.9, 1.2, 2, 0.4)
     JackUnit.printStats()
 
     TeamA = []
